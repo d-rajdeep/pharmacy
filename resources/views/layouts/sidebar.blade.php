@@ -116,10 +116,14 @@
 
                 <!-- Logout -->
                 <li class="sidebar-item">
-                    <a class="sidebar-link text-danger" href="#">
-                        <i data-feather="log-out" class="feather-icon"></i>
-                        <span class="hide-menu">Logout</span>
-                    </a>
+                    <form action="{{ route('admin.logout') }}" method="POST" class="m-0">
+                        @csrf
+                        <button type="submit"
+                            class="sidebar-link bg-transparent border-0 text-danger w-100 text-start d-flex align-items-center">
+                            <i data-feather="log-out" class="feather-icon me-2"></i>
+                            <span class="hide-menu">Logout</span>
+                        </button>
+                    </form>
                 </li>
             </ul>
         </nav>

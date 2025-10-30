@@ -22,7 +22,8 @@ Route::get('/admin/dashboard', function () {
 Route::get('/user/dashboard', function () {
     return view('dashboard.user_dashboard');
 })->middleware(['auth', 'role:user'])->name('user.dashboard');
-
+// Logout
+Route::post('/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 
 
 Route::get('/', function () {
