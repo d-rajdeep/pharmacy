@@ -48,16 +48,21 @@ class MedicineController extends Controller
     // Update medicine
     public function update(Request $request, Medicine $medicine)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'price' => 'required|numeric',
+            'category_id' => 'required|exists:medicine_categories,id',
             'quantity' => 'required|integer|min:0',
+            'price' => 'required|numeric|min:0',
+            'expiry_date' => 'nullable|date',
+            'description' => 'nullable|string',
         ]);
 
-        $medicine->update($request->all());
+        $medicine->update($validated);
 
-        return redirect()->route('admin.medicines.index')->with('success', 'Medicine updated successfully.');
+        return redirect()->route('admin.medicines.index')
+            ->with('success', 'Medicine updated successfully.');
     }
+
 
     // Delete medicine
     public function destroy(Medicine $medicine)
