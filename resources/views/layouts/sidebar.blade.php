@@ -21,9 +21,11 @@
                         <span class="hide-menu">Medicines</span>
                     </a>
                     <ul aria-expanded="false" class="collapse first-level base-level-line">
-                        <li class="sidebar-item"> <a href="table-basic.html" class="sidebar-link"> <span
+                        <li class="sidebar-item"> <a href="{{route('admin.categories.index')}}" class="sidebar-link"> <span
+                                    class="hide-menu"> Category </span> </a> </li>
+                        <li class="sidebar-item"> <a href="{{route('admin.medicines.index')}}" class="sidebar-link"> <span
                                     class="hide-menu"> All Medicines </span> </a> </li>
-                        <li class="sidebar-item"> <a href="table-dark-basic.html" class="sidebar-link"> <span
+                        <li class="sidebar-item"> <a href="{{route('admin.medicines.create')}}" class="sidebar-link"> <span
                                     class="hide-menu"> Add Medicine </span> </a> </li>
                     </ul>
                 </li>
