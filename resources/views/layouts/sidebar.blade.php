@@ -22,7 +22,7 @@
                     </a>
                     <ul aria-expanded="false" class="collapse first-level base-level-line">
                         <li class="sidebar-item"> <a href="{{route('admin.categories.index')}}" class="sidebar-link"> <span
-                                    class="hide-menu"> Category </span> </a> </li>
+                                    class="hide-menu"> Medicine Category </span> </a> </li>
                         <li class="sidebar-item"> <a href="{{route('admin.medicines.index')}}" class="sidebar-link"> <span
                                     class="hide-menu"> All Medicines </span> </a> </li>
                         <li class="sidebar-item"> <a href="{{route('admin.medicines.create')}}" class="sidebar-link"> <span
