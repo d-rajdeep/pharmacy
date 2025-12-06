@@ -47,7 +47,7 @@ Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
     Route::get('/medicines/create', [MedicineController::class, 'create'])->name('medicines.create');
     Route::post('/medicines', [MedicineController::class, 'store'])->name('medicines.store');
     Route::get('/medicines/{id}/edit', [MedicineController::class, 'edit'])->name('medicines.edit');
-    Route::put('/medicines/{id}', [MedicineController::class, 'update'])->name('medicines.update');
+    Route::put('/medicines/{medicine}', [MedicineController::class, 'update'])->name('medicines.update');
     Route::delete('/medicines/{id}', [MedicineController::class, 'destroy'])->name('medicines.destroy');
 });
 

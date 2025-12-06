@@ -14,6 +14,44 @@
                 </div>
             </div>
         </div>
+        {{-- Search Medicine --}}
+        <div class="container mt-3">
+            <div class="card shadow-sm border-0" style="border-radius: 20px;">
+                <div class="card-body">
+
+                    <form action="{{ route('admin.medicines.index') }}" method="GET">
+                        <div class="row align-items-center">
+
+                            {{-- Search Input --}}
+                            <div class="col-md-5 mb-2">
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white border-end-0">
+                                        <i class="fas fa-search text-muted"></i>
+                                    </span>
+                                    <input type="text" name="search" class="form-control border-start-0"
+                                        placeholder="Search medicine name..." value="{{ request('search') }}"
+                                        style="border-radius: 0 10px 10px 0;">
+                                </div>
+                            </div>
+
+                            {{-- Buttons --}}
+                            <div class="col-md-4 d-flex gap-2 mb-2">
+                                <button type="submit" class="btn btn-primary w-100" style="border-radius: 10px;">
+                                    <i class="fas fa-filter"></i> Search
+                                </button>
+                                <a href="{{ route('admin.medicines.index') }}" class="btn btn-secondary w-100"
+                                    style="border-radius: 10px;">
+                                    <i class="fas fa-sync-alt"></i> Reset
+                                </a>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        {{-- Search Medicine End --}}
 
         <div class="container-fluid">
             <div class="card shadow-sm border-0">
@@ -62,7 +100,8 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="8" class="text-center text-muted">No medicines found.</td>
+                                        <td colspan="8" class="text-center text-muted">No medicines found.
+                                        </td>
                                     </tr>
                                 @endforelse
                             </tbody>

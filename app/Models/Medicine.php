@@ -13,7 +13,7 @@ class Medicine extends Model
         'name',
         'generic_name',
         'brand',
-        'category',
+        'category_id',
         'quantity',
         'price',
         'supplier',

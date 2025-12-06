@@ -9,9 +9,15 @@ use Illuminate\Http\Request;
 class MedicineController extends Controller
 {
     // Show all medicines
-    public function index()
+    public function index(Request $request)
     {
-        $medicines = Medicine::latest()->paginate(10);
+        $medicines = Medicine::query()
+            ->when($request->search, function ($q) use ($request) {
+                $q->where('name', 'LIKE', '%' . $request->search . '%');
+            })
+            ->latest()
+            ->paginate(10);
+
         return view('medicines.index', compact('medicines'));
     }
 

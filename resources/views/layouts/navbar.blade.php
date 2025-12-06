@@ -11,7 +11,7 @@
                 <a href="{{ route('admin.dashboard') }}" class="d-flex align-items-center text-decoration-none">
                     <img src="{{ asset('assets/images/drugs.png') }}" alt="" class="img-fluid me-2"
                         style="height: 40px;">
-                    <h3 class="mb-0 text-dark">Pharmacy Admin</h3>
+                    <h3 class="mb-0 text-dark">Dashboard</h3>
                 </a>
             </div>
             <!-- ============================================================== -->
@@ -67,23 +67,26 @@
                         <a class="dropdown-item" href="javascript:void(0)"><i data-feather="user"
                                 class="svg-icon me-2 ms-1"></i>
                             My Profile</a>
-                        <a class="dropdown-item" href="javascript:void(0)"><i data-feather="credit-card"
+                        {{-- <a class="dropdown-item" href="javascript:void(0)"><i data-feather="credit-card"
                                 class="svg-icon me-2 ms-1"></i>
                             My Balance</a>
                         <a class="dropdown-item" href="javascript:void(0)"><i data-feather="mail"
                                 class="svg-icon me-2 ms-1"></i>
                             Inbox</a>
-                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-divider"></div> --}}
                         <a class="dropdown-item" href="javascript:void(0)"><i data-feather="settings"
                                 class="svg-icon me-2 ms-1"></i>
                             Account Setting</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="javascript:void(0)"><i data-feather="power"
-                                class="svg-icon me-2 ms-1"></i>
-                            Logout</a>
-                        <div class="dropdown-divider"></div>
+                        <form action="{{ route('admin.logout') }}" method="POST">
+                            @csrf
+                            <button class="dropdown-item" type="submit">
+                                <i data-feather="power" class="svg-icon me-2 ms-1"></i> Logout
+                            </button>
+                        </form>
+
+                        {{-- <div class="dropdown-divider"></div>
                         <div class="pl-4 p-3"><a href="javascript:void(0)" class="btn btn-sm btn-info">View
-                                Profile</a></div>
+                                Profile</a></div> --}}
                     </div>
                 </li>
                 <!-- ============================================================== -->
