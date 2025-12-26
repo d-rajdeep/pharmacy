@@ -4,12 +4,13 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\UserLoginController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\MedicineCategoryController;
 use App\Http\Controllers\MedicineController;
 
 // ADMIN LOGIN ROUTES
-Route::get('/admin/login', [AdminLoginController::class, 'showLoginForm'])->name('admin.login.page');
-Route::post('/admin/login', [AdminLoginController::class, 'login'])->name('admin.login');
+Route::get('/', [AdminLoginController::class, 'showLoginForm'])->name('admin.login.page');
+Route::post('/login', [AdminLoginController::class, 'login'])->name('admin.login');
 
 // USER LOGIN ROUTES
 Route::get('/user/login', [UserLoginController::class, 'showLoginForm'])->name('user.login.page');
@@ -49,8 +50,16 @@ Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
     Route::get('/medicines/{id}/edit', [MedicineController::class, 'edit'])->name('medicines.edit');
     Route::put('/medicines/{medicine}', [MedicineController::class, 'update'])->name('medicines.update');
     Route::delete('/medicines/{id}', [MedicineController::class, 'destroy'])->name('medicines.destroy');
+
+    // Inventory
+    Route::get('/inventory/summary', [InventoryController::class, 'summary'])->name('inventory.summary');
+
+    Route::get('/medicines/{id}/adjust-stock', [InventoryController::class, 'adjustForm'])->name('medicines.adjust.form');
+
+    Route::post('/medicines/{id}/adjust-stock', [InventoryController::class, 'adjustStock'])
+        ->name('medicines.adjust');
 });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });

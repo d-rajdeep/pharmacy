@@ -15,35 +15,67 @@
                 <li class="list-divider"></li>
 
                 <!-- Medicines -->
-                <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow" href="javascript:void(0)">
+                @php
+                    $isMedicines = request()->is('admin/medicines*') || request()->is('admin/categories*');
+                @endphp
+
+                <li class="sidebar-item {{ $isMedicines ? 'selected' : '' }}">
+                    <a class="sidebar-link has-arrow {{ $isMedicines ? 'active' : '' }}" href="javascript:void(0)">
                         <i data-feather="package" class="feather-icon"></i>
                         <span class="hide-menu">Medicines</span>
                     </a>
-                    <ul aria-expanded="false" class="collapse first-level base-level-line">
+                    <ul class="collapse first-level base-level-line {{ $isMedicines ? 'in' : '' }}">
+                        <li class="sidebar-item">
+                            <a href="{{ route('admin.medicines.index') }}"
+                                class="sidebar-link {{ request()->routeIs('admin.medicines.index') ? 'active' : '' }}">
+                                All Medicines
+                            </a>
+                        </li>
 
-                        <li class="sidebar-item"> <a href="{{ route('admin.medicines.index') }}" class="sidebar-link">
-                                <span class="hide-menu"> All Medicines </span> </a> </li>
-                        <li class="sidebar-item"> <a href="{{ route('admin.categories.index') }}" class="sidebar-link">
-                                <span class="hide-menu"> Medicine Category </span> </a> </li>
-                        <li class="sidebar-item"> <a href="{{ route('admin.medicines.create') }}" class="sidebar-link">
-                                <span class="hide-menu"> Add Medicine </span> </a> </li>
+                        <li class="sidebar-item">
+                            <a href="{{ route('admin.categories.index') }}"
+                                class="sidebar-link {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">
+                                Medicine Category
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="{{ route('admin.medicines.create') }}"
+                                class="sidebar-link {{ request()->routeIs('admin.medicines.create') ? 'active' : '' }}">
+                                Add Medicine
+                            </a>
+                        </li>
                     </ul>
                 </li>
 
+
                 <!-- Inventory -->
-                <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow" href="javascript:void(0)">
+                @php
+                    $isInventory = request()->is('admin/inventory*');
+                @endphp
+
+                <li class="sidebar-item {{ $isInventory ? 'selected' : '' }}">
+                    <a class="sidebar-link has-arrow {{ $isInventory ? 'active' : '' }}" href="javascript:void(0)">
                         <i data-feather="database" class="feather-icon"></i>
                         <span class="hide-menu">Inventory</span>
                     </a>
-                    <ul aria-expanded="false" class="collapse first-level base-level-line">
-                        <li class="sidebar-item"> <a href="table-basic.html" class="sidebar-link"> <span
-                                    class="hide-menu"> Stock Summary </span> </a> </li>
-                        <li class="sidebar-item"> <a href="table-dark-basic.html" class="sidebar-link"> <span
-                                    class="hide-menu"> Adjust Stock </span> </a> </li>
+
+                    <ul class="collapse first-level base-level-line {{ $isInventory ? 'in' : '' }}">
+                        <li class="sidebar-item">
+                            <a href="{{ route('admin.inventory.summary') }}"
+                                class="sidebar-link {{ request()->routeIs('admin.inventory.summary') ? 'active' : '' }}">
+                                Stock Summary
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="{{ route('admin.medicines.index') }}" class="sidebar-link">
+                                Adjust Stock
+                            </a>
+                        </li>
                     </ul>
                 </li>
+
 
                 <!-- Sales -->
                 <li class="sidebar-item">

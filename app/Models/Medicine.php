@@ -15,6 +15,7 @@ class Medicine extends Model
         'brand',
         'category_id',
         'quantity',
+        'mrp',
         'price',
         'supplier',
         'manufacture_date',
@@ -25,5 +26,10 @@ class Medicine extends Model
     public function category()
     {
         return $this->belongsTo(MedicineCategory::class, 'category_id');
+    }
+
+    public function stockAdjustments()
+    {
+        return $this->hasMany(StockAdjustment::class);
     }
 }

@@ -58,6 +58,7 @@ class MedicineController extends Controller
             'name' => 'required|string|max:255',
             'category_id' => 'required|exists:medicine_categories,id',
             'quantity' => 'required|integer|min:0',
+            'mrp' => 'required|numeric|min:0',
             'price' => 'required|numeric|min:0',
             'expiry_date' => 'nullable|date',
             'description' => 'nullable|string',
