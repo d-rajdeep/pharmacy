@@ -76,6 +76,32 @@
                     </ul>
                 </li>
 
+                <!-- Billing -->
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow" href="javascript:void(0)">
+                        <i data-feather="shopping-bag" class="feather-icon"></i>
+                        <span class="hide-menu">Billing</span>
+                    </a>
+
+                    <ul aria-expanded="false" class="collapse first-level base-level-line">
+
+                        <!-- All Purchases / Bills -->
+                        <li class="sidebar-item">
+                            <a href="{{ route('admin.billing.index') }}" class="sidebar-link">
+                                <span class="hide-menu">All Purchases</span>
+                            </a>
+                        </li>
+
+                        <!-- Add Purchase / New Bill -->
+                        <li class="sidebar-item">
+                            <a href="{{ route('admin.billing.create') }}" class="sidebar-link">
+                                <span class="hide-menu">Add Purchase</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
 
                 <!-- Sales -->
                 <li class="sidebar-item">
@@ -91,19 +117,6 @@
                     </ul>
                 </li>
 
-                <!-- Purchases -->
-                <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow" href="javascript:void(0)">
-                        <i data-feather="shopping-bag" class="feather-icon"></i>
-                        <span class="hide-menu">Purchases</span>
-                    </a>
-                    <ul aria-expanded="false" class="collapse first-level base-level-line">
-                        <li class="sidebar-item"> <a href="table-basic.html" class="sidebar-link"> <span
-                                    class="hide-menu"> All Purchases </span> </a> </li>
-                        <li class="sidebar-item"> <a href="table-dark-basic.html" class="sidebar-link"> <span
-                                    class="hide-menu"> Add Purchase </span> </a> </li>
-                    </ul>
-                </li>
 
                 <!-- Customers -->
                 <li class="sidebar-item">

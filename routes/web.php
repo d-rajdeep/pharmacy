@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\UserLoginController;
+use App\Http\Controllers\BillingController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\MedicineCategoryController;
 use App\Http\Controllers\MedicineController;
@@ -58,6 +59,15 @@ Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
 
     Route::post('/medicines/{id}/adjust-stock', [InventoryController::class, 'adjustStock'])
         ->name('medicines.adjust');
+
+    // Billing
+    Route::prefix('billing')->name('billing.')->group(function () {
+        Route::get('/', [BillingController::class, 'index'])->name('index');
+        Route::get('/create', [BillingController::class, 'create'])->name('create');
+        Route::post('/store', [BillingController::class, 'store'])->name('store');
+        Route::get('/{bill}', [BillingController::class, 'show'])->name('show');
+        Route::get('/{bill}/download', [BillingController::class, 'downloadPDF'])->name('download');
+    });
 });
 
 // Route::get('/', function () {
