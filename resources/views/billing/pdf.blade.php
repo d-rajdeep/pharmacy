@@ -44,7 +44,7 @@
 
 <body>
     <div class="header">
-        <h1>PHARMACY INVOICE</h1>
+        <h1>MEDHI MEDICOS</h1>
         <p>Invoice #{{ $bill->invoice_no }} | Date: {{ $bill->created_at->format('d-m-Y') }}</p>
     </div>
 

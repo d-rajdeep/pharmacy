@@ -18,4 +18,8 @@ class BillItem extends Model
     {
         return $this->belongsTo(Medicine::class);
     }
+    public function bill()
+    {
+        return $this->belongsTo(Bill::class);
+    }
 }

@@ -60,465 +60,142 @@
             <!-- Start First Cards -->
             <!-- *************************************************************** -->
             <div class="row">
-                <div class="col-sm-6 col-lg-3">
-                    <div class="card border-end">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium">236</h2>
-                                    </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Total Medicines
-                                    </h6>
-                                </div>
-                            </div>
+
+                {{-- Total Medicines --}}
+                <div class="col-md-3">
+                    <div class="card shadow-sm border-0" style="border-radius:20px;">
+                        <div class="card-body text-center">
+                            <i data-feather="package" class="text-primary mb-2"></i>
+                            <h5>Total Medicines</h5>
+                            <h2 class="fw-bold">{{ $totalMedicines }}</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="card border-end ">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium"><sup
-                                            class="set-doller">₹</sup>18,306</h2>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Earnings of
-                                        Month
-                                    </h6>
-                                </div>
-                            </div>
+
+                {{-- Total Stock --}}
+                <div class="col-md-3">
+                    <div class="card shadow-sm border-0" style="border-radius:20px;">
+                        <div class="card-body text-center">
+                            <i data-feather="database" class="text-success mb-2"></i>
+                            <h5>Total Stock</h5>
+                            <h2 class="fw-bold">{{ $totalStock }}</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="card border-end ">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium">1538</h2>
-                                    </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Total Customers
-                                    </h6>
-                                </div>
-                            </div>
+
+                {{-- Low Stock --}}
+                <div class="col-md-3">
+                    <div class="card shadow-sm border-0" style="border-radius:20px;">
+                        <div class="card-body text-center">
+                            <i data-feather="alert-triangle" class="text-warning mb-2"></i>
+                            <h5>Low Stock</h5>
+                            <h2 class="fw-bold">{{ $lowStock }}</h2>
+                            <small class="text-muted">(1–10 qty)</small>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="card ">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <h2 class="text-dark mb-1 font-weight-medium">221</h2>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Low Stock</h6>
-                                </div>
-                            </div>
+
+                {{-- Out of Stock --}}
+                <div class="col-md-3">
+                    <div class="card shadow-sm border-0" style="border-radius:20px;">
+                        <div class="card-body text-center">
+                            <i data-feather="x-circle" class="text-danger mb-2"></i>
+                            <h5>Out of Stock</h5>
+                            <h2 class="fw-bold">{{ $outOfStock }}</h2>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- *************************************************************** -->
-            <!-- End First Cards -->
-            <!-- *************************************************************** -->
-            <!-- *************************************************************** -->
-            <!-- Start Sales Charts Section -->
-            <!-- *************************************************************** -->
-            <div class="row">
-                <div class="col-lg-4 col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Total Sales</h4>
-                            <div id="campaign-v2" class="mt-2" style="height:283px; width:100%;"></div>
-                            <ul class="list-style-none mb-0">
-                                <li>
-                                    <i class="fas fa-circle text-primary font-10 me-2"></i>
-                                    <span class="text-muted">Direct Sales</span>
-                                    <span class="text-dark float-end font-weight-medium">$2346</span>
-                                </li>
-                                <li class="mt-3">
-                                    <i class="fas fa-circle text-danger font-10 me-2"></i>
-                                    <span class="text-muted">Referral Sales</span>
-                                    <span class="text-dark float-end font-weight-medium">$2108</span>
-                                </li>
-                                <li class="mt-3">
-                                    <i class="fas fa-circle text-cyan font-10 me-2"></i>
-                                    <span class="text-muted">Affiliate Sales</span>
-                                    <span class="text-dark float-end font-weight-medium">$1204</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Net Income</h4>
-                            <div class="net-income mt-4 position-relative" style="height:294px;"></div>
-                            <ul class="list-inline text-center mt-5 mb-2">
-                                <li class="list-inline-item text-muted fst-italic">Sales for this month</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title mb-4">Earning by Location</h4>
-                            <div class="" style="height:180px">
-                                <div id="visitbylocate" style="height:100%"></div>
-                            </div>
-                            <div class="row mb-3 align-items-center mt-1 mt-5">
-                                <div class="col-4 text-end">
-                                    <span class="text-muted font-14">India</span>
-                                </div>
-                                <div class="col-5">
-                                    <div class="progress" style="height: 5px;">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 100%"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div class="col-3 text-end">
-                                    <span class="mb-0 font-14 text-dark font-weight-medium">28%</span>
-                                </div>
-                            </div>
-                            <div class="row mb-3 align-items-center">
-                                <div class="col-4 text-end">
-                                    <span class="text-muted font-14">UK</span>
-                                </div>
-                                <div class="col-5">
-                                    <div class="progress" style="height: 5px;">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 74%"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div class="col-3 text-end">
-                                    <span class="mb-0 font-14 text-dark font-weight-medium">21%</span>
-                                </div>
-                            </div>
-                            <div class="row mb-3 align-items-center">
-                                <div class="col-4 text-end">
-                                    <span class="text-muted font-14">USA</span>
-                                </div>
-                                <div class="col-5">
-                                    <div class="progress" style="height: 5px;">
-                                        <div class="progress-bar bg-cyan" role="progressbar" style="width: 60%"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div class="col-3 text-end">
-                                    <span class="mb-0 font-14 text-dark font-weight-medium">18%</span>
-                                </div>
-                            </div>
-                            <div class="row align-items-center">
-                                <div class="col-4 text-end">
-                                    <span class="text-muted font-14">China</span>
-                                </div>
-                                <div class="col-5">
-                                    <div class="progress" style="height: 5px;">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 50%"
-                                            aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div class="col-3 text-end">
-                                    <span class="mb-0 font-14 text-dark font-weight-medium">12%</span>
-                                </div>
+                {{-- Total Inventory Value --}}
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <div class="card shadow-sm border-0" style="border-radius:20px;">
+                            <div class="card-body text-center">
+                                <i data-feather="dollar-sign" class="text-info mb-2"></i>
+                                <h5>Total Inventory Value</h5>
+                                <h2 class="fw-bold text-success">
+                                    ₹ {{ number_format($totalValue, 2) }}
+                                </h2>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- *************************************************************** -->
-            <!-- End Sales Charts Section -->
-            <!-- *************************************************************** -->
-            <!-- *************************************************************** -->
-            <!-- Start Location and Earnings Charts Section -->
-            <!-- *************************************************************** -->
-            <div class="row">
-                <div class="col-md-6 col-lg-8">
-                    <div class="card">
+
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="card shadow-sm border-0" style="border-radius:20px;">
                         <div class="card-body">
-                            <div class="d-flex align-items-start">
-                                <h4 class="card-title mb-0">Earning Statistics</h4>
-                                <div class="ms-auto">
-                                    <div class="dropdown sub-dropdown">
-                                        <button class="btn btn-link text-muted dropdown-toggle" type="button"
-                                            id="dd1" data-bs-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
-                                            <i data-feather="more-vertical"></i>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dd1">
-                                            <a class="dropdown-item" href="#">Insert</a>
-                                            <a class="dropdown-item" href="#">Update</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
-                                    </div>
+                            <form method="GET" class="row g-3 align-items-end">
+
+                                <div class="col-md-3">
+                                    <label class="form-label fw-semibold">Filter by Date</label>
+                                    <input type="date" name="date" class="form-control" value="{{ request('date') }}">
                                 </div>
-                            </div>
-                            <div class="pl-4 mb-5">
-                                <div class="stats ct-charts position-relative" style="height: 315px;"></div>
-                            </div>
-                            <ul class="list-inline text-center mt-4 mb-0">
-                                <li class="list-inline-item text-muted fst-italic">Earnings for this month</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Recent Activity</h4>
-                            <div class="mt-4 activity">
-                                <div class="d-flex align-items-start border-left-line pb-3">
-                                    <div>
-                                        <a href="javascript:void(0)" class="btn btn-info btn-circle mb-2 btn-item">
-                                            <i data-feather="shopping-cart"></i>
-                                        </a>
-                                    </div>
-                                    <div class="ms-3 mt-2">
-                                        <h5 class="text-dark font-weight-medium mb-2">New Product Sold!</h5>
-                                        <p class="font-14 mb-2 text-muted">John Musa just purchased <br> Cannon 5M
-                                            Camera.
-                                        </p>
-                                        <span class="font-weight-light font-14 text-muted">10 Minutes Ago</span>
-                                    </div>
+
+                                <div class="col-md-3">
+                                    <label class="form-label fw-semibold">Filter by Month</label>
+                                    <input type="month" name="month" class="form-control"
+                                        value="{{ request('month') }}">
                                 </div>
-                                <div class="d-flex align-items-start border-left-line pb-3">
-                                    <div>
-                                        <a href="javascript:void(0)" class="btn btn-danger btn-circle mb-2 btn-item">
-                                            <i data-feather="message-square"></i>
-                                        </a>
-                                    </div>
-                                    <div class="ms-3 mt-2">
-                                        <h5 class="text-dark font-weight-medium mb-2">New Support Ticket</h5>
-                                        <p class="font-14 mb-2 text-muted">Richardson just create support <br>
-                                            ticket</p>
-                                        <span class="font-weight-light font-14 text-muted">25 Minutes Ago</span>
-                                    </div>
+
+                                <div class="col-md-3 d-flex gap-2">
+                                    <button class="btn btn-primary w-100">Filter</button>
+                                    <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary w-100">Reset</a>
                                 </div>
-                                <div class="d-flex align-items-start border-left-line">
-                                    <div>
-                                        <a href="javascript:void(0)" class="btn btn-cyan btn-circle mb-2 btn-item">
-                                            <i data-feather="bell"></i>
-                                        </a>
-                                    </div>
-                                    <div class="ms-3 mt-2">
-                                        <h5 class="text-dark font-weight-medium mb-2">Notification Pending Order!
-                                        </h5>
-                                        <p class="font-14 mb-2 text-muted">One Pending order from Ryne <br> Doe</p>
-                                        <span class="font-weight-light font-14 mb-1 d-block text-muted">2 Hours
-                                            Ago</span>
-                                        <a href="javascript:void(0)" class="font-14 border-bottom pb-1 border-info">Load
-                                            More</a>
-                                    </div>
-                                </div>
-                            </div>
+
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- *************************************************************** -->
-            <!-- End Location and Earnings Charts Section -->
-            <!-- *************************************************************** -->
-            <!-- *************************************************************** -->
-            <!-- Start Top Leader Table -->
-            <!-- *************************************************************** -->
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
+
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <div class="card shadow-sm border-0" style="border-radius:20px;">
                         <div class="card-body">
-                            <div class="d-flex align-items-center mb-4">
-                                <h4 class="card-title">Top Leaders</h4>
-                                <div class="ms-auto">
-                                    <div class="dropdown sub-dropdown">
-                                        <button class="btn btn-link text-muted dropdown-toggle" type="button"
-                                            id="dd1" data-bs-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="false">
-                                            <i data-feather="more-vertical"></i>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd1">
-                                            <a class="dropdown-item" href="#">Insert</a>
-                                            <a class="dropdown-item" href="#">Update</a>
-                                            <a class="dropdown-item" href="#">Delete</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <h5 class="mb-3 fw-bold">Recent Purchases</h5>
+
                             <div class="table-responsive">
-                                <table class="table no-wrap v-middle mb-0">
-                                    <thead>
-                                        <tr class="border-0">
-                                            <th class="border-0 font-14 font-weight-medium text-muted">Team Lead
-                                            </th>
-                                            <th class="border-0 font-14 font-weight-medium text-muted px-2">Project
-                                            </th>
-                                            <th class="border-0 font-14 font-weight-medium text-muted">Team</th>
-                                            <th class="border-0 font-14 font-weight-medium text-muted text-center">
-                                                Status
-                                            </th>
-                                            <th class="border-0 font-14 font-weight-medium text-muted text-center">
-                                                Weeks
-                                            </th>
-                                            <th class="border-0 font-14 font-weight-medium text-muted">Budget</th>
+                                <table class="table table-hover align-middle">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Sl. No</th>
+                                            <th>Bill No</th>
+                                            <th>Customer</th>
+                                            <th>Total (₹)</th>
+                                            <th>Date</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="border-top-0 px-2 py-4">
-                                                <div class="d-flex no-block align-items-center">
-                                                    <div class="me-3"><img
-                                                            src="../assets/images/users/widget-table-pic1.jpg"
-                                                            alt="user" class="rounded-circle" width="45"
-                                                            height="45" /></div>
-                                                    <div class="">
-                                                        <h5 class="text-dark mb-0 font-16 font-weight-medium">Hanna
-                                                            Gover</h5>
-                                                        <span class="text-muted font-14">hgover@gmail.com</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="border-top-0 text-muted px-2 py-4 font-14">Elite Admin</td>
-                                            <td class="border-top-0 px-2 py-4">
-                                                <div class="popover-icon">
-                                                    <a class="btn btn-primary rounded-circle btn-circle font-12"
-                                                        href="javascript:void(0)">DS</a>
-                                                    <a class="btn btn-danger rounded-circle btn-circle font-12 popover-item"
-                                                        href="javascript:void(0)">SS</a>
-                                                    <a class="btn btn-cyan rounded-circle btn-circle font-12 popover-item"
-                                                        href="javascript:void(0)">RP</a>
-                                                    <a class="btn btn-success text-white rounded-circle btn-circle font-20"
-                                                        href="javascript:void(0)">+</a>
-                                                </div>
-                                            </td>
-                                            <td class="border-top-0 text-center px-2 py-4"><i
-                                                    class="fa fa-circle text-primary font-12" data-bs-toggle="tooltip"
-                                                    data-placement="top" title="In Testing"></i></td>
-                                            <td class="border-top-0 text-center font-weight-medium text-muted px-2 py-4">
-                                                35
-                                            </td>
-                                            <td class="font-weight-medium text-dark border-top-0 px-2 py-4">$96K
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-2 py-4">
-                                                <div class="d-flex no-block align-items-center">
-                                                    <div class="me-3"><img
-                                                            src="../assets/images/users/widget-table-pic2.jpg"
-                                                            alt="user" class="rounded-circle" width="45"
-                                                            height="45" /></div>
-                                                    <div class="">
-                                                        <h5 class="text-dark mb-0 font-16 font-weight-medium">Daniel
-                                                            Kristeen
-                                                        </h5>
-                                                        <span class="text-muted font-14">Kristeen@gmail.com</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="text-muted px-2 py-4 font-14">Real Homes WP Theme</td>
-                                            <td class="px-2 py-4">
-                                                <div class="popover-icon">
-                                                    <a class="btn btn-primary rounded-circle btn-circle font-12"
-                                                        href="javascript:void(0)">DS</a>
-                                                    <a class="btn btn-danger rounded-circle btn-circle font-12 popover-item"
-                                                        href="javascript:void(0)">SS</a>
-                                                    <a class="btn btn-success text-white rounded-circle btn-circle font-20"
-                                                        href="javascript:void(0)">+</a>
-                                                </div>
-                                            </td>
-                                            <td class="text-center px-2 py-4"><i class="fa fa-circle text-success font-12"
-                                                    data-bs-toggle="tooltip" data-placement="top" title="Done"></i>
-                                            </td>
-                                            <td class="text-center text-muted font-weight-medium px-2 py-4">32</td>
-                                            <td class="font-weight-medium text-dark px-2 py-4">$85K</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="px-2 py-4">
-                                                <div class="d-flex no-block align-items-center">
-                                                    <div class="me-3"><img
-                                                            src="../assets/images/users/widget-table-pic3.jpg"
-                                                            alt="user" class="rounded-circle" width="45"
-                                                            height="45" /></div>
-                                                    <div class="">
-                                                        <h5 class="text-dark mb-0 font-16 font-weight-medium">Julian
-                                                            Josephs
-                                                        </h5>
-                                                        <span class="text-muted font-14">Josephs@gmail.com</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="text-muted px-2 py-4 font-14">MedicalPro WP Theme</td>
-                                            <td class="px-2 py-4">
-                                                <div class="popover-icon">
-                                                    <a class="btn btn-primary rounded-circle btn-circle font-12"
-                                                        href="javascript:void(0)">DS</a>
-                                                    <a class="btn btn-danger rounded-circle btn-circle font-12 popover-item"
-                                                        href="javascript:void(0)">SS</a>
-                                                    <a class="btn btn-cyan rounded-circle btn-circle font-12 popover-item"
-                                                        href="javascript:void(0)">RP</a>
-                                                    <a class="btn btn-success text-white rounded-circle btn-circle font-20"
-                                                        href="javascript:void(0)">+</a>
-                                                </div>
-                                            </td>
-                                            <td class="text-center px-2 py-4"><i class="fa fa-circle text-primary font-12"
-                                                    data-bs-toggle="tooltip" data-placement="top" title="Done"></i>
-                                            </td>
-                                            <td class="text-center text-muted font-weight-medium px-2 py-4">29</td>
-                                            <td class="font-weight-medium text-dark px-2 py-4">$81K</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="border-bottom-0 px-2 py-4">
-                                                <div class="d-flex no-block align-items-center">
-                                                    <div class="me-3"><img
-                                                            src="../assets/images/users/widget-table-pic4.jpg"
-                                                            alt="user" class="rounded-circle" width="45"
-                                                            height="45" /></div>
-                                                    <div class="">
-                                                        <h5 class="text-dark mb-0 font-16 font-weight-medium">Jan
-                                                            Petrovic
-                                                        </h5>
-                                                        <span class="text-muted font-14">hgover@gmail.com</span>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td class="border-bottom-0 text-muted px-2 py-4 font-14">Hosting Press
-                                                HTML</td>
-                                            <td class="border-bottom-0 px-2 py-4">
-                                                <div class="popover-icon">
-                                                    <a class="btn btn-primary rounded-circle btn-circle font-12"
-                                                        href="javascript:void(0)">DS</a>
-                                                    <a class="btn btn-success text-white font-20 rounded-circle btn-circle"
-                                                        href="javascript:void(0)">+</a>
-                                                </div>
-                                            </td>
-                                            <td class="border-bottom-0 text-center px-2 py-4"><i
-                                                    class="fa fa-circle text-danger font-12" data-bs-toggle="tooltip"
-                                                    data-placement="top" title="In Progress"></i></td>
-                                            <td
-                                                class="border-bottom-0 text-center text-muted font-weight-medium px-2 py-4">
-                                                23</td>
-                                            <td class="border-bottom-0 font-weight-medium text-dark px-2 py-4">$80K
-                                            </td>
-                                        </tr>
+                                        @foreach ($bills as $bill)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $bill->invoice_no }}</td>
+                                                <td>{{ $bill->customer_name }}</td>
+                                                <td>₹{{ $bill->total }}</td>
+                                                <td>{{ $bill->created_at->format('d M Y') }}</td>
+                                                <td><a href="{{ route('admin.billing.show', $bill->id) }}"
+                                                        class="btn btn-sm btn-primary">
+                                                        <i class="fas fa-eye"></i> View
+                                                    </a></td>
+                                            </tr>
+                                        @endforeach
+
+                                        {{ $bills->links() }}
                                     </tbody>
                                 </table>
                             </div>
+
+                            <div class="d-flex justify-content-end">
+                                {{ $bills->links() }}
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- *************************************************************** -->
-            <!-- End Top Leader Table -->
-            <!-- *************************************************************** -->
         </div>
-        <!-- ============================================================== -->
-        <!-- End Container fluid  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- footer -->
-        <!-- ============================================================== -->
         @include('layouts.footer')
-        <!-- ============================================================== -->
-        <!-- End footer -->
-        <!-- ============================================================== -->
     </div>
 @endsection

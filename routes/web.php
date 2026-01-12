@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\UserLoginController;
 use App\Http\Controllers\BillingController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\MedicineCategoryController;
 use App\Http\Controllers\MedicineController;
@@ -18,10 +19,10 @@ Route::get('/user/login', [UserLoginController::class, 'showLoginForm'])->name('
 Route::post('/user/login', [UserLoginController::class, 'login'])->name('user.login');
 
 // DASHBOARD ROUTES
-Route::get('/admin/dashboard', function () {
-    return view('dashboard.index');  // make sure this file exists
-})->middleware(['auth', 'role:admin'])->name('admin.dashboard');
-
+Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'summary'])
+        ->name('dashboard');
+});
 // User Dashboard
 Route::get('/user/dashboard', function () {
     return view('dashboard.user_dashboard');
