@@ -24,8 +24,22 @@
                         </tr>
                     @endforeach
                 </table>
+                <h6 class="text-end">Discount (%):-{{ number_format($bill->discount, 2) }}</h6>
+                <h4 class="text-end">Grand Total: ₹{{ $bill->total }}</h4>
+                <td class="text-end">
+                    <div class="d-flex gap-2 justify-content-end">
 
-                <h5 class="text-end">Grand Total: ₹{{ $bill->total_amount }}</h5>
+                        <a href="{{ route('admin.billing.download', $bill) }}" class="btn btn-sm btn-outline-success px-3">
+                            <i class="fas fa-print me-1"></i> Print
+                        </a>
+
+                        <a href="{{ route('admin.billing.index') }}" class="btn btn-sm btn-outline-primary px-3">
+                            <i class="fas fa-arrow-left me-1"></i> Back
+                        </a>
+
+                    </div>
+                </td>
+
             </div>
         </div>
     </div>

@@ -64,10 +64,15 @@ Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
     // Billing
     Route::prefix('billing')->name('billing.')->group(function () {
         Route::get('/', [BillingController::class, 'index'])->name('index');
+
+        Route::get('/billing/search-medicine', [BillingController::class, 'searchMedicine'])
+            ->name('search.medicine');
+
         Route::get('/create', [BillingController::class, 'create'])->name('create');
         Route::post('/store', [BillingController::class, 'store'])->name('store');
         Route::get('/{bill}', [BillingController::class, 'show'])->name('show');
         Route::get('/{bill}/download', [BillingController::class, 'downloadPDF'])->name('download');
+        Route::delete('/{bill}/delete', [BillingController::class, 'destroy'])->name('delete');
     });
 });
 

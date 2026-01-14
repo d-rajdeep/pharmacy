@@ -81,13 +81,13 @@
                 <td>Subtotal:</td>
                 <td>{{ number_format($bill->subtotal, 2) }}</td>
             </tr>
-            <tr>
+            {{-- <tr>
                 <td>Tax:</td>
                 <td>+{{ number_format($bill->tax, 2) }}</td>
-            </tr>
+            </tr> --}}
             <tr>
-                <td>Discount:</td>
-                <td>-{{ number_format($bill->discount, 2) }}</td>
+                <td>Discount (%):</td>
+                <td>{{ number_format($bill->discount, 2) }}</td>
             </tr>
             <tr style="font-weight: bold;">
                 <td>Total:</td>

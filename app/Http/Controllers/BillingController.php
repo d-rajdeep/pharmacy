@@ -42,7 +42,8 @@ class BillingController extends Controller
                     $subtotal += $medicine->price * $item['quantity'];
                 }
 
-                $discount = $request->discount ?? 0;
+                $discountPercent = $request->discount ?? 0;
+                $discountAmount = ($subtotal * $discountPercent) / 100;
                 $tax = $request->tax ?? 0;
 
                 $bill = Bill::create([
@@ -50,9 +51,9 @@ class BillingController extends Controller
                     'customer_name' => $request->customer_name,
                     'customer_phone' => $request->customer_phone,
                     'subtotal' => $subtotal,
-                    'discount' => $discount,
+                    'discount' => $discountPercent,
                     'tax' => $tax,
-                    'total' => $subtotal - $discount + $tax,
+                    'total' => $subtotal - $discountAmount + $tax,
                 ]);
 
                 foreach ($request->items as $item) {
@@ -88,6 +89,18 @@ class BillingController extends Controller
         }
     }
 
+    public function searchMedicine(Request $request)
+    {
+        $query = $request->q;
+
+        $medicines = Medicine::where('name', 'LIKE', "%{$query}%")
+            ->where('quantity', '>', 0)
+            ->limit(10)
+            ->get(['id', 'name', 'price', 'quantity']);
+
+        return response()->json($medicines);
+    }
+
     public function downloadPDF(Bill $bill)
     {
         $bill->load('items.medicine');
@@ -102,5 +115,36 @@ class BillingController extends Controller
     {
         $bill->load('items.medicine');
         return view('billing.show', compact('bill'));
+    }
+
+    public function destroy(Bill $bill)
+    {
+        DB::transaction(function () use ($bill) {
+
+            // Restore stock for each bill item
+            foreach ($bill->items as $item) {
+                $medicine = Medicine::find($item->medicine_id);
+
+                if ($medicine) {
+                    $medicine->increment('quantity', $item->quantity);
+
+                    // Optional: record stock rollback
+                    StockAdjustment::create([
+                        'medicine_id' => $medicine->id,
+                        'type' => 'in',
+                        'quantity' => $item->quantity,
+                        'reason' => 'Bill deleted - ' . $bill->invoice_no,
+                    ]);
+                }
+            }
+
+            // Delete bill items first
+            $bill->items()->delete();
+
+            // Delete bill
+            $bill->delete();
+        });
+
+        return redirect()->back()->with('success', 'Bill deleted successfully');
     }
 }
