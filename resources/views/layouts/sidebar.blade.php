@@ -115,14 +115,26 @@
                 <!-- Customers -->
                 <li class="sidebar-item">
                     <a class="sidebar-link has-arrow" href="javascript:void(0)">
-                        <i data-feather="users" class="feather-icon"></i>
+                        <i data-feather="feather-users" class="feather-icon"></i>
                         <span class="hide-menu">Customers</span>
                     </a>
+
                     <ul aria-expanded="false" class="collapse first-level base-level-line">
-                        <li class="sidebar-item"> <a href="table-basic.html" class="sidebar-link"> <span
-                                    class="hide-menu"> Customer List </span> </a> </li>
-                        <li class="sidebar-item"> <a href="table-dark-basic.html" class="sidebar-link"> <span
-                                    class="hide-menu"> Add Customer </span> </a> </li>
+
+                        <!-- All Customers -->
+                        <li class="sidebar-item">
+                            <a href="{{ route('admin.customers.index') }}" class="sidebar-link">
+                                <span class="hide-menu">All Customers</span>
+                            </a>
+                        </li>
+
+                        <!-- Customers Bill -->
+                        <li class="sidebar-item">
+                            <a href="{{ route('admin.customers.bills') }}" class="sidebar-link">
+                                <span class="hide-menu">Customers Bills</span>
+                            </a>
+                        </li>
+
                     </ul>
                 </li>
 

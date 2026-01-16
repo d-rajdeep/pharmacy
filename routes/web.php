@@ -78,6 +78,13 @@ Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
 
     Route::get('/sales-summary', [SaleSummaryController::class, 'index'])
         ->name('sales.summary');
+
+    // Sales / Customers
+    Route::get('/customers-list', [SaleSummaryController::class, 'customers'])
+        ->name('customers.index');
+
+    Route::get('/customers', [SaleSummaryController::class, 'customerBills'])
+            ->name('customers.bills');
 });
 
 // Route::get('/', function () {

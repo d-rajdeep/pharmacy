@@ -33,6 +33,26 @@
             </div>
         </div>
 
+        <div class="container">
+
+            <h4 class="mb-4">Sales Overview</h4>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <canvas id="dailyChart"></canvas>
+                </div>
+
+                <div class="col-md-4">
+                    <canvas id="weeklyChart"></canvas>
+                </div>
+
+                <div class="col-md-4">
+                    <canvas id="monthlyChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+
         {{-- Table --}}
         <div class="container-fluid">
             <div class="card shadow-sm border-0">
@@ -79,6 +99,45 @@
                 </div>
             </div>
         </div>
-
     </div>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        /* ================= DAILY ================= */
+        new Chart(document.getElementById('dailyChart'), {
+            type: 'bar',
+            data: {
+                labels: {!! json_encode($dailySales->pluck('date')) !!},
+                datasets: [{
+                    label: 'Daily Sales (₹)',
+                    data: {!! json_encode($dailySales->pluck('total')) !!}
+                }]
+            }
+        });
+
+        /* ================= WEEKLY ================= */
+        new Chart(document.getElementById('weeklyChart'), {
+            type: 'line',
+            data: {
+                labels: {!! json_encode($weeklySales->pluck('date')) !!},
+                datasets: [{
+                    label: 'Weekly Sales (₹)',
+                    data: {!! json_encode($weeklySales->pluck('total')) !!}
+                }]
+            }
+        });
+
+        /* ================= MONTHLY ================= */
+        new Chart(document.getElementById('monthlyChart'), {
+            type: 'bar',
+            data: {
+                labels: {!! json_encode($monthlySales->pluck('month')->map(fn($m) => date('M', mktime(0, 0, 0, $m, 1)))) !!},
+                datasets: [{
+                    label: 'Monthly Sales (₹)',
+                    data: {!! json_encode($monthlySales->pluck('total')) !!}
+                }]
+            }
+        });
+    </script>
 @endsection
