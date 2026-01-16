@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\MedicineCategoryController;
 use App\Http\Controllers\MedicineController;
+use App\Http\Controllers\SaleSummaryController;
 
 // ADMIN LOGIN ROUTES
 Route::get('/', [AdminLoginController::class, 'showLoginForm'])->name('admin.login.page');
@@ -74,6 +75,9 @@ Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
         Route::get('/{bill}/download', [BillingController::class, 'downloadPDF'])->name('download');
         Route::delete('/{bill}/delete', [BillingController::class, 'destroy'])->name('delete');
     });
+
+    Route::get('/sales-summary', [SaleSummaryController::class, 'index'])
+        ->name('sales.summary');
 });
 
 // Route::get('/', function () {

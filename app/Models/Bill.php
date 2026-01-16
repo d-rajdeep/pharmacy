@@ -13,7 +13,8 @@ class Bill extends Model
         'subtotal',
         'discount',
         'tax',
-        'total'
+        'total',
+        'created_at'
     ];
 
     public function items()
