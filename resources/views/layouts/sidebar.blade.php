@@ -129,40 +129,50 @@
                         <span class="hide-menu">Customers</span>
                     </a>
                     <ul aria-expanded="false" class="collapse first-level base-level-line">
-                        <li class="sidebar-item"> <a href="table-basic.html" class="sidebar-link"> <span
-                                    class="hide-menu"> Customer List </span> </a> </li>
-                        <li class="sidebar-item"> <a href="table-dark-basic.html" class="sidebar-link"> <span
-                                    class="hide-menu"> Add Customer </span> </a> </li>
+                        <li class="sidebar-item">
+                            <a href="{{ route('admin.customers.index') }}" class="sidebar-link">
+                                <span class="hide-menu">Customer List</span>
+                            </a>
+                        </li>
+
                     </ul>
                 </li>
 
                 <!-- Suppliers -->
                 <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow" href="javascript:void(0)">
-                        <i data-feather="truck" class="feather-icon"></i>
-                        <span class="hide-menu">Suppliers</span>
+
+                    <a class="sidebar-link disabled-menu" href="javascript:void(0)">
+                        <i data-feather="truck" class="feather-icon text-muted"></i>
+
+                        <span class="hide-menu text-muted">
+                            Suppliers
+                        </span>
+
+                        <span class="badge bg-warning text-dark ms-auto">
+                            Coming Soon
+                        </span>
                     </a>
-                    <ul aria-expanded="false" class="collapse first-level base-level-line">
-                        <li class="sidebar-item"> <a href="table-basic.html" class="sidebar-link"> <span
-                                    class="hide-menu"> Supplier List </span> </a> </li>
-                        <li class="sidebar-item"> <a href="table-dark-basic.html" class="sidebar-link"> <span
-                                    class="hide-menu"> Add Supplier </span> </a> </li>
-                    </ul>
+
                 </li>
+
 
                 <!-- Reports -->
                 <li class="sidebar-item">
-                    <a class="sidebar-link has-arrow" href="javascript:void(0)">
-                        <i data-feather="bar-chart-2" class="feather-icon"></i>
-                        <span class="hide-menu">Reports</span>
+
+                    <a class="sidebar-link disabled-menu" href="javascript:void(0)">
+                        <i data-feather="bar-chart-2" class="feather-icon text-muted"></i>
+
+                        <span class="hide-menu text-muted">
+                            Reports
+                        </span>
+
+                        <span class="badge bg-info text-white ms-auto">
+                            Coming Soon
+                        </span>
                     </a>
-                    <ul aria-expanded="false" class="collapse first-level base-level-line">
-                        <li class="sidebar-item"> <a href="table-basic.html" class="sidebar-link"> <span
-                                    class="hide-menu"> Sales Report </span> </a> </li>
-                        <li class="sidebar-item"> <a href="table-dark-basic.html" class="sidebar-link"> <span
-                                    class="hide-menu"> Inventory Report </span> </a> </li>
-                    </ul>
+
                 </li>
+
 
                 <li class="list-divider"></li>
 

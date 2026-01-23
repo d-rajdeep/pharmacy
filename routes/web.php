@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\UserLoginController;
 use App\Http\Controllers\BillingController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\MedicineCategoryController;
@@ -78,6 +79,10 @@ Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
 
     Route::get('/sales', [SaleController::class, 'index'])
         ->name('sales.index');
+
+    Route::get('admin/customers', [CustomerController::class, 'index'])
+    ->name('customers.index');
+
 });
 
 // Route::get('/', function () {

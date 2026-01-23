@@ -2,6 +2,17 @@
 <html dir="ltr" lang="en">
 
 @include('layouts.head')
+<style>
+    .disabled-menu {
+        pointer-events: none;
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .disabled-menu:hover {
+        background: transparent !important;
+    }
+</style>
 
 <body>
     <!-- ============================================================== -->
@@ -53,7 +64,7 @@
     <!-- apps -->
     <!-- apps -->
     <script src="{{ asset('dist/js/app-style-switcher.js') }}"></script>
-    <script src="{{ asset('dist/js/feather.min.js')}}"></script>
+    <script src="{{ asset('dist/js/feather.min.js') }}"></script>
     <script src="{{ asset('assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js') }}"></script>
     <script src="{{ asset('dist/js/sidebarmenu.js') }}"></script>
     <!--Custom JavaScript -->
