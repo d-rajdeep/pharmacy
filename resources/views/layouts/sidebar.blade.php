@@ -109,11 +109,15 @@
                         <i data-feather="shopping-cart" class="feather-icon"></i>
                         <span class="hide-menu">Sales</span>
                     </a>
+
                     <ul aria-expanded="false" class="collapse first-level base-level-line">
-                        <li class="sidebar-item"> <a href="table-basic.html" class="sidebar-link"> <span
-                                    class="hide-menu"> All Sales </span> </a> </li>
-                        <li class="sidebar-item"> <a href="table-dark-basic.html" class="sidebar-link"> <span
-                                    class="hide-menu"> New Sale </span> </a> </li>
+
+                        <li class="sidebar-item">
+                            <a href="{{ route('admin.sales.index') }}" class="sidebar-link">
+                                <span class="hide-menu">All Sales</span>
+                            </a>
+                        </li>
+
                     </ul>
                 </li>
 

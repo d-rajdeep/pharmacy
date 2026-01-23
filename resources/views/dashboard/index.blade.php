@@ -110,7 +110,7 @@
                     <div class="col-md-12">
                         <div class="card shadow-sm border-0" style="border-radius:20px;">
                             <div class="card-body text-center">
-                                <i data-feather="dollar-sign" class="text-info mb-2"></i>
+                                {{-- <i data-feather="dollar-sign" class="text-info mb-2"></i> --}}
                                 <h5>Total Inventory Value</h5>
                                 <h2 class="fw-bold text-success">
                                     ₹ {{ number_format($totalValue, 2) }}
