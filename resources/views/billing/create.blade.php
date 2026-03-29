@@ -42,15 +42,17 @@
                     </div>
 
                     {{-- Medicine Search --}}
-                    <div class="mb-4 position-relative">
+                    <div class="mb-4 position-relative" style="z-index: 1050;">
                         <label class="form-label fw-semibold text-primary">
                             <i class="fas fa-search me-1"></i> Search & Add Medicine
                         </label>
                         <input type="text" id="medicine-search"
                             class="form-control form-control-lg border-primary shadow-sm"
                             placeholder="Start typing medicine name...">
-                        <div id="medicine-results" class="list-group position-absolute w-100 shadow-lg mt-1"
-                            style="z-index:1000;"></div>
+
+                        <div id="medicine-results" class="list-group position-absolute w-100 shadow-lg mt-1 bg-white"
+                            style="z-index: 1050; max-height: 300px; overflow-y: auto; border-radius: 8px;">
+                        </div>
                     </div>
 
                     {{-- Items Table --}}

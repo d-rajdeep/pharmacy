@@ -2,17 +2,7 @@
 <html dir="ltr" lang="en">
 
 @include('layouts.head')
-<style>
-    .disabled-menu {
-        pointer-events: none;
-        opacity: 0.6;
-        cursor: not-allowed;
-    }
 
-    .disabled-menu:hover {
-        background: transparent !important;
-    }
-</style>
 
 <body>
     <!-- ============================================================== -->
