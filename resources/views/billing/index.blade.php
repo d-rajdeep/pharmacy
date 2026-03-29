@@ -15,6 +15,7 @@
                             <th>Phone</th>
                             <th>Total</th>
                             <th>Date</th>
+                            <th>Time</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -27,6 +28,7 @@
                                 <td>{{ $bill->customer_phone }}</td>
                                 <td>₹{{ $bill->total }}</td>
                                 <td>{{ $bill->created_at->format('d-m-Y') }}</td>
+                                <td>{{ $bill->created_at->format('h:i A') }}</td>
                                 <td>
                                     <a href="{{ route('admin.billing.show', $bill) }}" class="btn btn-sm btn-primary">
                                         View

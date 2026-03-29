@@ -33,8 +33,10 @@ class MedicineController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'quantity' => 'required|integer|min:0',
+            'category_id' => 'required|exists:medicine_categories,id', // Added this as it was missing in your original store method
+            'quantity' => 'required|integer|min:0', // Strips available
+            'tablets_per_strip' => 'required|integer|min:1',
+            'mrp' => 'required|numeric|min:0',
         ]);
 
         Medicine::create($request->all());
@@ -58,16 +60,15 @@ class MedicineController extends Controller
             'name' => 'required|string|max:255',
             'category_id' => 'required|exists:medicine_categories,id',
             'quantity' => 'required|integer|min:0',
+            'tablets_per_strip' => 'required|integer|min:1',
             'mrp' => 'required|numeric|min:0',
-            'price' => 'required|numeric|min:0',
             'expiry_date' => 'nullable|date',
             'description' => 'nullable|string',
         ]);
 
         $medicine->update($validated);
 
-        return redirect()->route('admin.medicines.index')
-            ->with('success', 'Medicine updated successfully.');
+        return redirect()->route('admin.medicines.index')->with('success', 'Medicine updated successfully.');
     }
 
 

@@ -24,6 +24,7 @@ Route::post('/user/login', [UserLoginController::class, 'login'])->name('user.lo
 Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'summary'])
         ->name('dashboard');
+    Route::get('/dashboard/expiring-soon', [DashboardController::class, 'expiringSoon'])->name('dashboard.expiring');
 });
 // User Dashboard
 Route::get('/user/dashboard', function () {
@@ -81,8 +82,7 @@ Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
         ->name('sales.index');
 
     Route::get('admin/customers', [CustomerController::class, 'index'])
-    ->name('customers.index');
-
+        ->name('customers.index');
 });
 
 // Route::get('/', function () {

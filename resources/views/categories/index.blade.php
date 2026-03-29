@@ -16,8 +16,21 @@
         </div>
 
         <div class="container-fluid">
+
+            @if (session('error'))
+                <div class="alert alert-danger alert-dismissible fade show mt-3 shadow-sm" role="alert"
+                    style="border-radius: 10px;">
+                    <i class="fas fa-exclamation-triangle me-2"></i>{{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
             @if (session('success'))
-                <div class="alert alert-success mt-3">{{ session('success') }}</div>
+                <div class="alert alert-success alert-dismissible fade show mt-3 shadow-sm" role="alert"
+                    style="border-radius: 10px;">
+                    <i class="fas fa-check-circle me-2"></i>{{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
             @endif
 
             <div class="card shadow-sm border-0 mt-3" style="border-radius: 20px;">

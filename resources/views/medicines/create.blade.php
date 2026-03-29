@@ -40,21 +40,22 @@
                         </div>
 
                         <div class="col-md-4 mb-3">
-                            <label class="form-label fw-semibold">Quantity</label>
+                            <label class="form-label fw-semibold">Strips Available</label>
                             <input type="number" name="quantity" value="{{ old('quantity') }}" class="form-control"
-                                required>
+                                placeholder="e.g., 50" required>
                         </div>
 
                         <div class="col-md-4 mb-3">
-                            <label class="form-label fw-semibold">MRP (₹)</label>
+                            <label class="form-label fw-semibold">Tablets in One Strip</label>
+                            <input type="number" name="tablets_per_strip" value="{{ old('tablets_per_strip', 10) }}"
+                                class="form-control" placeholder="e.g., 10 or 15" required>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label fw-semibold">MRP per Strip (₹)</label>
                             <input type="number" step="0.01" name="mrp" value="{{ old('mrp') }}"
-                                class="form-control" required>
-                        </div>
-
-                        <div class="col-md-4 mb-3">
-                            <label class="form-label fw-semibold">Selling Price (₹)</label>
-                            <input type="number" step="0.01" name="price" value="{{ old('price') }}"
-                                class="form-control" required>
+                                class="form-control" placeholder="0.00" required>
+                            <small class="text-muted">Price per tablet will be auto-calculated in billing</small>
                         </div>
 
                         <div class="col-md-4 mb-3">

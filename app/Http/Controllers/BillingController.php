@@ -27,26 +27,44 @@ class BillingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'customer_name' => 'required|string|max:255',
+            'customer_phone' => 'required|numeric|digits:10',
             'items' => 'required|array',
             'items.*.medicine_id' => 'required|exists:medicines,id',
-            'items.*.quantity' => 'required|integer|min:1',
+            'items.*.quantity' => 'required|numeric|min:1',
+            'items.*.type' => 'required|in:strip,tablet',
+        ], [
+            'customer_phone.digits' => 'The phone number must be exactly 10 digits.',
+            'items.required' => 'You must add at least one medicine to the bill.',
         ]);
 
         try {
-            DB::transaction(function () use ($request) {
+            $bill = DB::transaction(function () use ($request) {
                 $subtotal = 0;
 
-                // First pass: Calculate subtotal
+                // First pass: Calculate subtotal & Check Expiry
                 foreach ($request->items as $item) {
                     $medicine = Medicine::findOrFail($item['medicine_id']);
-                    $subtotal += $medicine->price * $item['quantity'];
+
+                    // --- NEW EXPIRY CHECK ---
+                    if ($medicine->expiry_date && \Carbon\Carbon::parse($medicine->expiry_date)->endOfDay()->isPast()) {
+                        $formattedDate = \Carbon\Carbon::parse($medicine->expiry_date)->format('d-m-Y');
+                        throw new \Exception("Cannot sell '{$medicine->name}'. It expired on {$formattedDate}.");
+                    }
+                    // ------------------------
+
+                    $unitPrice = $item['type'] === 'tablet'
+                        ? ($medicine->mrp / $medicine->tablets_per_strip)
+                        : $medicine->mrp;
+
+                    $subtotal += $unitPrice * $item['quantity'];
                 }
 
                 $discountPercent = $request->discount ?? 0;
                 $discountAmount = ($subtotal * $discountPercent) / 100;
                 $tax = $request->tax ?? 0;
 
-                $bill = Bill::create([
+                $newBill = Bill::create([
                     'invoice_no' => 'INV-' . now()->format('YmdHis'),
                     'customer_name' => $request->customer_name,
                     'customer_phone' => $request->customer_phone,
@@ -59,31 +77,41 @@ class BillingController extends Controller
                 foreach ($request->items as $item) {
                     $medicine = Medicine::findOrFail($item['medicine_id']);
 
-                    if ($medicine->quantity < $item['quantity']) {
+                    $unitPrice = $item['type'] === 'tablet'
+                        ? ($medicine->mrp / $medicine->tablets_per_strip)
+                        : $medicine->mrp;
+
+                    $stockToDeduct = $item['type'] === 'tablet'
+                        ? ($item['quantity'] / $medicine->tablets_per_strip)
+                        : $item['quantity'];
+
+                    if ($medicine->quantity < $stockToDeduct) {
                         throw new \Exception("Insufficient stock for {$medicine->name}");
                     }
 
-                    $medicine->decrement('quantity', $item['quantity']);
+                    $medicine->decrement('quantity', $stockToDeduct);
 
                     BillItem::create([
-                        'bill_id' => $bill->id,
+                        'bill_id' => $newBill->id,
                         'medicine_id' => $medicine->id,
                         'quantity' => $item['quantity'],
-                        'price' => $medicine->price,
-                        'total' => $medicine->price * $item['quantity'],
+                        'price' => $unitPrice,
+                        'total' => $unitPrice * $item['quantity'],
                     ]);
 
-                    // Optional: Stock Adjustment record
                     StockAdjustment::create([
                         'medicine_id' => $medicine->id,
                         'type' => 'out',
-                        'quantity' => $item['quantity'],
-                        'reason' => 'Sale - Invoice ' . $bill->invoice_no,
+                        'quantity' => $stockToDeduct,
+                        'reason' => 'Sale (' . ucfirst($item['type']) . ') - Invoice ' . $newBill->invoice_no,
                     ]);
                 }
+
+                return $newBill;
             });
 
-            return redirect()->route('admin.billing.index')->with('success', 'Bill generated successfully');
+            return redirect()->route('admin.billing.show', $bill->id)
+                ->with('success', 'Bill generated successfully!');
         } catch (\Exception $e) {
             return back()->withInput()->with('error', $e->getMessage());
         }
@@ -92,11 +120,17 @@ class BillingController extends Controller
     public function searchMedicine(Request $request)
     {
         $query = $request->q;
+        $today = now()->toDateString(); // Get today's date
 
         $medicines = Medicine::where('name', 'LIKE', "%{$query}%")
             ->where('quantity', '>', 0)
+            ->where(function ($q) use ($today) {
+                // Ensure expiry_date is either null (no expiry set) OR in the future/today
+                $q->whereNull('expiry_date')
+                    ->orWhere('expiry_date', '>=', $today);
+            })
             ->limit(10)
-            ->get(['id', 'name', 'price', 'quantity']);
+            ->get(['id', 'name', 'mrp', 'quantity', 'tablets_per_strip']);
 
         return response()->json($medicines);
     }
@@ -104,10 +138,7 @@ class BillingController extends Controller
     public function downloadPDF(Bill $bill)
     {
         $bill->load('items.medicine');
-
-        // This points to resources/views/billing/pdf.blade.php
         $pdf = Pdf::loadView('billing.pdf', compact('bill'));
-
         return $pdf->stream('Invoice-' . $bill->invoice_no . '.pdf');
     }
 
@@ -120,28 +151,13 @@ class BillingController extends Controller
     public function destroy(Bill $bill)
     {
         DB::transaction(function () use ($bill) {
-
-            // Restore stock for each bill item
             foreach ($bill->items as $item) {
                 $medicine = Medicine::find($item->medicine_id);
-
                 if ($medicine) {
                     $medicine->increment('quantity', $item->quantity);
-
-                    // Optional: record stock rollback
-                    StockAdjustment::create([
-                        'medicine_id' => $medicine->id,
-                        'type' => 'in',
-                        'quantity' => $item->quantity,
-                        'reason' => 'Bill deleted - ' . $bill->invoice_no,
-                    ]);
                 }
             }
-
-            // Delete bill items first
             $bill->items()->delete();
-
-            // Delete bill
             $bill->delete();
         });
 

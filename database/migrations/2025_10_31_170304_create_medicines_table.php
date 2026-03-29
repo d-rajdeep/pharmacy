@@ -6,23 +6,25 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up(): void
+    public function up()
     {
         Schema::create('medicines', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('generic_name')->nullable();
             $table->string('brand')->nullable();
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->integer('quantity')->default(0);
-            $table->decimal('price', 10, 2);
+            $table->foreignId('category_id')->nullable()->constrained('medicine_categories')->onDelete('set null');
+
+            // New Inventory & Pricing Logic
+            $table->integer('quantity')->default(0); // Strips Available
+            $table->integer('tablets_per_strip')->default(1);
+            $table->decimal('mrp', 10, 2); // Price for the full strip
+
             $table->string('supplier')->nullable();
             $table->date('manufacture_date')->nullable();
             $table->date('expiry_date')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
-
-            $table->foreign('category_id')->references('id')->on('medicine_categories')->onDelete('set null');
         });
     }
 

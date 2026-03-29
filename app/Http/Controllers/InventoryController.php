@@ -18,7 +18,7 @@ class InventoryController extends Controller
             'totalStock' => Medicine::sum('quantity'),
             'lowStock' => Medicine::whereBetween('quantity', [1, 10])->count(),
             'outOfStock' => Medicine::where('quantity', 0)->count(),
-            'totalValue' => Medicine::sum(DB::raw('quantity * price')),
+            'totalValue' => Medicine::sum(DB::raw('quantity * mrp')),
         ]);
     }
 

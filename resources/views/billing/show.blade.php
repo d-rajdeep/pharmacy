@@ -10,7 +10,7 @@
                 <table class="table mt-3">
                     <tr>
                         <th>Medicine</th>
-                        <th>Qty</th>
+                        <th>Qty(Strip/Teblet)</th>
                         <th>Price</th>
                         <th>Total</th>
                     </tr>
@@ -33,7 +33,7 @@
                             <i class="fas fa-print me-1"></i> Print
                         </a>
 
-                        <a href="{{ route('admin.billing.index') }}" class="btn btn-sm btn-outline-primary px-3">
+                        <a href="{{ route('admin.sales.index') }}" class="btn btn-sm btn-outline-primary px-3">
                             <i class="fas fa-arrow-left me-1"></i> Back
                         </a>
 

@@ -15,7 +15,12 @@ class DashboardController extends Controller
         $totalStock = Medicine::sum('quantity');
         $lowStock = Medicine::whereBetween('quantity', [1, 10])->count();
         $outOfStock = Medicine::where('quantity', 0)->count();
-        $totalValue = Medicine::sum(DB::raw('quantity * price'));
+        $totalValue = Medicine::sum(DB::raw('quantity * mrp'));
+
+        // Count medicines expiring in the next 2 months
+        $expiringSoonCount = Medicine::whereNotNull('expiry_date')
+            ->whereBetween('expiry_date', [now(), now()->addMonths(2)])
+            ->count();
 
         // Purchases / Bills
         $bills = Bill::query()
@@ -36,7 +41,20 @@ class DashboardController extends Controller
             'lowStock',
             'outOfStock',
             'totalValue',
+            'expiringSoonCount',
             'bills'
         ));
+    }
+
+    // New method for the detailed expiring medicines page
+    public function expiringSoon()
+    {
+        $medicines = Medicine::with('category')
+            ->whereNotNull('expiry_date')
+            ->whereBetween('expiry_date', [now(), now()->addMonths(2)])
+            ->orderBy('expiry_date', 'asc')
+            ->paginate(15);
+
+        return view('dashboard.expiring', compact('medicines'));
     }
 }

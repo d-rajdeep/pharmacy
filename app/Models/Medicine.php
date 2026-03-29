@@ -14,9 +14,9 @@ class Medicine extends Model
         'generic_name',
         'brand',
         'category_id',
-        'quantity',
-        'mrp',
-        'price',
+        'quantity',          // We will treat this as "Strips Available"
+        'tablets_per_strip', // New field
+        'mrp',               // MRP of the full strip
         'supplier',
         'manufacture_date',
         'expiry_date',

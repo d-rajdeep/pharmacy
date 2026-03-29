@@ -45,10 +45,21 @@ class MedicineCategoryController extends Controller
         return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
     }
 
-    public function destroy(MedicineCategory $category)
+    public function destroy($id)
     {
-        $category->delete();
+        // 1. Manually find the exact category by ID to guarantee we have the right one
+        $medicineCategory = MedicineCategory::findOrFail($id);
 
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
+        // 2. Check if there are any medicines attached to this category
+        if ($medicineCategory->medicines()->exists()) {
+            return redirect()->route('admin.categories.index')
+                ->with('error', 'Cannot delete this category because it contains medicines. Please reassign or delete the medicines first.');
+        }
+
+        // 3. Delete the actual database record
+        $medicineCategory->delete();
+
+        return redirect()->route('admin.categories.index')
+            ->with('success', 'Category deleted successfully.');
     }
 }

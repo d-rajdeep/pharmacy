@@ -65,11 +65,12 @@
                                     <th>Sl. No</th>
                                     <th>Name</th>
                                     <th>Category</th>
-                                    <th>Quantity</th>
-                                    <th>MRP</th>
-                                    <th>Sell Price (₹)</th>
+                                    <th>Strips Avail.</th>
+                                    <th>Tabs/Strip</th>
+                                    <th>Total Stock</th>
+                                    <th>MRP/Strip</th>
                                     <th>Expiry Date</th>
-                                    <th>Rack. No</th>
+                                    <th>Location</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -79,9 +80,11 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $medicine->name }}</td>
                                         <td>{{ $medicine->category->name ?? 'N/A' }}</td>
-                                        <td>{{ $medicine->quantity }}</td>
+                                        <td><span class="badge bg-primary">{{ $medicine->quantity }} Strips</span></td>
+                                        <td>{{ $medicine->tablets_per_strip }}</td>
+                                        <td><strong>{{ $medicine->quantity * $medicine->tablets_per_strip }} Tabs</strong>
+                                        </td>
                                         <td>₹{{ number_format($medicine->mrp, 2) }}</td>
-                                        <td>₹{{ number_format($medicine->price, 2) }}</td>
                                         <td>{{ $medicine->expiry_date ?? '-' }}</td>
                                         <td>{{ Str::limit($medicine->description, 50) }}</td>
                                         <td class="text-center">

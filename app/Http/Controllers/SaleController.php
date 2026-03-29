@@ -57,7 +57,7 @@ class SaleController extends Controller
 
         $sales = $query
             ->latest()
-            ->paginate(15)
+            ->paginate(5)
             ->withQueryString(); // keep filters on pagination
 
 
