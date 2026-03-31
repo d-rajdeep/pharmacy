@@ -139,7 +139,7 @@
                                onclick="addMedicine(${med.id}, '${med.name.replace(/'/g, "\\'")}', ${med.mrp}, ${med.tablets_per_strip})">
                                 <div>
                                     <strong>${med.name}</strong><br>
-                                    <small class="text-muted">₹${med.mrp}/Strip | ₹${pricePerTab}/Tab</small>
+                                    <small class="text-muted">₹${med.mrp}/Qnty | ₹${pricePerTab}/Tab</small>
                                 </div>
                                 <span class="badge bg-success rounded-pill">${med.quantity} Strips Left</span>
                             </a>`;

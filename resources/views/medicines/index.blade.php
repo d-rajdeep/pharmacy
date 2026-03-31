@@ -65,7 +65,7 @@
                                     <th>Sl. No</th>
                                     <th>Name</th>
                                     <th>Category</th>
-                                    <th>Strips Avail.</th>
+                                    <th>Qnty Avail.</th>
                                     <th>Tabs/Strip</th>
                                     <th>Total Stock</th>
                                     <th>MRP/Strip</th>
@@ -80,7 +80,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $medicine->name }}</td>
                                         <td>{{ $medicine->category->name ?? 'N/A' }}</td>
-                                        <td><span class="badge bg-primary">{{ $medicine->quantity }} Strips</span></td>
+                                        <td><span class="badge bg-primary">{{ $medicine->quantity }} Qnty</span></td>
                                         <td>{{ $medicine->tablets_per_strip }}</td>
                                         <td><strong>{{ $medicine->quantity * $medicine->tablets_per_strip }} Tabs</strong>
                                         </td>

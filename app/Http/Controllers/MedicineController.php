@@ -35,7 +35,7 @@ class MedicineController extends Controller
             'name' => 'required|string|max:255',
             'category_id' => 'required|exists:medicine_categories,id', // Added this as it was missing in your original store method
             'quantity' => 'required|integer|min:0', // Strips available
-            'tablets_per_strip' => 'required|integer|min:1',
+            'tablets_per_strip' => 'nullable',
             'mrp' => 'required|numeric|min:0',
         ]);
 

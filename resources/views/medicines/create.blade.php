@@ -40,15 +40,15 @@
                         </div>
 
                         <div class="col-md-4 mb-3">
-                            <label class="form-label fw-semibold">Strips Available</label>
+                            <label class="form-label fw-semibold">Quantity Available</label>
                             <input type="number" name="quantity" value="{{ old('quantity') }}" class="form-control"
                                 placeholder="e.g., 50" required>
                         </div>
 
                         <div class="col-md-4 mb-3">
                             <label class="form-label fw-semibold">Tablets in One Strip</label>
-                            <input type="number" name="tablets_per_strip" value="{{ old('tablets_per_strip', 10) }}"
-                                class="form-control" placeholder="e.g., 10 or 15" required>
+                            <input type="number" name="tablets_per_strip" value="{{ old('tablets_per_strip') }}"
+                                class="form-control" placeholder="e.g., if the category is tablet">
                         </div>
 
                         <div class="col-md-4 mb-3">
