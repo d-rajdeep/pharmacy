@@ -105,7 +105,7 @@
         <div class="page-breadcrumb pb-4">
             <div class="row align-items-center">
                 <div class="col-md-6 col-12 align-self-center">
-                    <h3 class="page-title text-truncate text-dark font-weight-bold mb-1">Dashboard Overview</h3>
+                    <h3 class="page-title text-truncate text-dark font-weight-bold mb-1">Admin Dashboard</h3>
                     <p class="text-muted mb-0">Welcome back, Admin! Here is your summary.</p>
                 </div>
                 <div class="col-md-6 col-12 align-self-center mt-3 mt-md-0 d-flex justify-content-md-end">
