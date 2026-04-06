@@ -106,7 +106,7 @@
             <div class="row align-items-center">
                 <div class="col-md-6 col-12 align-self-center">
                     <h3 class="page-title text-truncate text-dark font-weight-bold mb-1">Dashboard Overview</h3>
-                    <p class="text-muted mb-0">Welcome back, Admin! Here is your pharmacy summary.</p>
+                    <p class="text-muted mb-0">Welcome back, Admin! Here is your summary.</p>
                 </div>
                 <div class="col-md-6 col-12 align-self-center mt-3 mt-md-0 d-flex justify-content-md-end">
                     <div id="datetime-box" class="bg-white shadow-sm px-4 py-2 text-center fw-bold text-primary"

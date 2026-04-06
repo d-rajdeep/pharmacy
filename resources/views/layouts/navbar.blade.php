@@ -9,7 +9,7 @@
                 <a href="{{ route('admin.dashboard') }}" class="d-flex align-items-center text-decoration-none">
                     <img src="{{ asset('assets/images/drugs.png') }}" alt="Logo" class="img-fluid me-2"
                         style="height: 35px; object-fit: contain;">
-                    <h4 class="mb-0 text-dark fw-bold" style="letter-spacing: -0.5px;">PharmaCore</h4>
+                    <h4 class="mb-0 text-dark fw-bold" style="letter-spacing: -0.5px;">Medhi Medicos</h4>
                 </a>
             </div>
 
