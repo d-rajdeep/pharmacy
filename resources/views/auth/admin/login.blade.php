@@ -64,7 +64,7 @@
             <div class="text-center mb-10">
                 <img src="{{ asset('assets/images/drugs.png') }}" alt="Pharmacy Logo" class="mx-auto h-14 w-auto mb-4"
                     style="object-fit: contain;">
-                <h2 class="text-2xl font-bold text-gray-900 tracking-tight">Admin Portal</h2>
+                <h2 class="text-2xl font-bold text-gray-900 tracking-tight">Admin Login</h2>
                 <p class="mt-2 text-sm text-gray-500 font-medium">Pharmacy Management System</p>
             </div>
 
