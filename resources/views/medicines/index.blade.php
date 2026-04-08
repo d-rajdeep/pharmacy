@@ -65,12 +65,12 @@
                                     <th>Sl. No</th>
                                     <th>Name</th>
                                     <th>Category</th>
-                                    <th>Qnty Avail.</th>
+                                    <th>Avail Qnty.</th>
                                     <th>Tabs/Strip</th>
                                     <th>Total Stock</th>
-                                    <th>MRP/Strip</th>
+                                    <th>MRP/Qnt</th>
                                     <th>Expiry Date</th>
-                                    <th>Location</th>
+                                    <th>Rack No.</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -79,9 +79,9 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $medicine->name }}</td>
-                                        <td>{{ $medicine->category->name ?? 'N/A' }}</td>
+                                        <td><span class="badge bg-secondary">{{ $medicine->category->name ?? 'N/A' }}</span></td>
                                         <td><span class="badge bg-primary">{{ $medicine->quantity }} Qnty</span></td>
-                                        <td>{{ $medicine->tablets_per_strip }}</td>
+                                        <td>{{ $medicine->tablets_per_strip ?? '---' }}</td>
                                         <td><strong>{{ $medicine->quantity * $medicine->tablets_per_strip }} Tabs</strong>
                                         </td>
                                         <td>₹{{ number_format($medicine->mrp, 2) }}</td>

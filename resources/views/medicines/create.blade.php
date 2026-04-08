@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="col-md-4 mb-3">
-                            <label class="form-label fw-semibold">Quantity Available</label>
+                            <label class="form-label fw-semibold">Available Quantity</label>
                             <input type="number" name="quantity" value="{{ old('quantity') }}" class="form-control"
                                 placeholder="e.g., 50" required>
                         </div>
@@ -52,7 +52,7 @@
                         </div>
 
                         <div class="col-md-4 mb-3">
-                            <label class="form-label fw-semibold">MRP per Strip (₹)</label>
+                            <label class="form-label fw-semibold">MRP per Quantity (₹)</label>
                             <input type="number" step="0.01" name="mrp" value="{{ old('mrp') }}"
                                 class="form-control" placeholder="0.00" required>
                             <small class="text-muted">Price per tablet will be auto-calculated in billing</small>
