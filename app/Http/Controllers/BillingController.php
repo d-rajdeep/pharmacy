@@ -33,6 +33,7 @@ class BillingController extends Controller
             'items.*.medicine_id' => 'required|exists:medicines,id',
             'items.*.quantity' => 'required|numeric|min:1',
             'items.*.type' => 'required|in:strip,tablet',
+            'payment_status' => 'required|in:paid,pending',
         ], [
             'customer_phone.digits' => 'The phone number must be exactly 10 digits.',
             'items.required' => 'You must add at least one medicine to the bill.',
@@ -72,6 +73,7 @@ class BillingController extends Controller
                     'discount' => $discountPercent,
                     'tax' => $tax,
                     'total' => $subtotal - $discountAmount + $tax,
+                    'payment_status' => $request->payment_status,
                 ]);
 
                 foreach ($request->items as $item) {
@@ -120,17 +122,16 @@ class BillingController extends Controller
     public function searchMedicine(Request $request)
     {
         $query = $request->q;
-        $today = now()->toDateString(); // Get today's date
+        $today = now()->toDateString();
 
         $medicines = Medicine::where('name', 'LIKE', "%{$query}%")
             ->where('quantity', '>', 0)
             ->where(function ($q) use ($today) {
-                // Ensure expiry_date is either null (no expiry set) OR in the future/today
                 $q->whereNull('expiry_date')
                     ->orWhere('expiry_date', '>=', $today);
             })
             ->limit(10)
-            ->get(['id', 'name', 'mrp', 'quantity', 'tablets_per_strip']);
+            ->get(['id', 'name', 'mrp', 'quantity', 'tablets_per_strip', 'description']);
 
         return response()->json($medicines);
     }

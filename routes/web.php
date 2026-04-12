@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\UserLoginController;
 use App\Http\Controllers\BillingController;
+use App\Http\Controllers\CreditController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InventoryController;
@@ -68,11 +69,17 @@ Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
     Route::prefix('billing')->name('billing.')->group(function () {
         Route::get('/', [BillingController::class, 'index'])->name('index');
 
-        Route::get('/billing/search-medicine', [BillingController::class, 'searchMedicine'])
-            ->name('search.medicine');
-
+        // STATIC ROUTES (Must go before wildcards)
         Route::get('/create', [BillingController::class, 'create'])->name('create');
         Route::post('/store', [BillingController::class, 'store'])->name('store');
+
+        Route::get('/search-medicine', [BillingController::class, 'searchMedicine'])
+            ->name('search.medicine'); // Fixed the double /billing/ prefix here
+
+        Route::get('/credit-customers', [CreditController::class, 'index'])->name('credit.index');
+        Route::post('/credit-customers/{phone}/pay', [CreditController::class, 'markAsPaid'])->name('credit.pay');
+
+        // WILDCARD ROUTES (Must go at the very bottom)
         Route::get('/{bill}', [BillingController::class, 'show'])->name('show');
         Route::get('/{bill}/download', [BillingController::class, 'downloadPDF'])->name('download');
         Route::delete('/{bill}/delete', [BillingController::class, 'destroy'])->name('delete');
@@ -81,7 +88,7 @@ Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
     Route::get('/sales', [SaleController::class, 'index'])
         ->name('sales.index');
 
-    Route::get('admin/customers', [CustomerController::class, 'index'])
+    Route::get('customers', [CustomerController::class, 'index'])
         ->name('customers.index');
 });
 

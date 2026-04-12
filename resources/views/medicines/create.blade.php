@@ -15,10 +15,11 @@
             </div>
         </div>
 
-        <div class="container-fluid">
-            <div class="card shadow-sm border-0 p-4">
+        <div class="container-fluid mt-3">
+            <div class="card shadow-sm border-0 p-4" style="border-radius: 20px;">
                 <form action="{{ route('admin.medicines.store') }}" method="POST">
                     @csrf
+
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label class="form-label fw-semibold">Medicine Name</label>

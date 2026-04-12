@@ -16,7 +16,7 @@ class CustomerController extends Controller
         )
             ->groupBy('customer_name', 'customer_phone')
             ->orderByDesc('last_purchase')
-            ->paginate(15);
+            ->paginate(5);
 
         return view('customers.index', compact('customers'));
     }

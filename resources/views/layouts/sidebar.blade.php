@@ -102,6 +102,14 @@
                     </a>
                 </li>
 
+                <!-- Credit Customers -->
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('admin.billing.credit.index') }}">
+                        <i data-feather="book-open" class="feather-icon"></i>
+                        <span class="hide-menu">Credit Customers</span>
+                    </a>
+                </li>
+
                 <!-- Suppliers -->
                 <li class="sidebar-item">
 

@@ -13,7 +13,8 @@ class Bill extends Model
         'subtotal',
         'discount',
         'tax',
-        'total'
+        'total',
+        'payment_status'
     ];
 
     public function items()
