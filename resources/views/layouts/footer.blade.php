@@ -1,6 +1,6 @@
 <footer class="footer d-flex align-items-center justify-content-between flex-wrap gap-2">
     <span>
-        &copy; {{ date('Y') }} <strong style="color: var(--pm-primary); font-weight:600;">PharmaCare</strong> —
+        &copy; {{ date('Y') }} <strong style="color: var(--pm-primary); font-weight:600;">Medhi Medicos</strong> —
         Pharmacy Management System
     </span>
     <span>
