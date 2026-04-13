@@ -29,6 +29,10 @@
                 <td class="text-end">
                     <div class="d-flex gap-2 justify-content-end">
 
+                        <a href="{{ $bill->whatsapp_url }}" target="_blank" class="btn btn-success shadow-sm px-4 fw-bold">
+                            <i class="fab fa-whatsapp me-2"></i> Send to WhatsApp
+                        </a>
+
                         <a href="{{ route('admin.billing.download', $bill) }}" class="btn btn-sm btn-outline-success px-3">
                             <i class="fas fa-print me-1"></i> Print
                         </a>

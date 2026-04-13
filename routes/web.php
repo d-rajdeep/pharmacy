@@ -92,6 +92,8 @@ Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
         ->name('customers.index');
 });
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
+Route::get('/invoice/{bill}/download', [BillingController::class, 'publicDownload'])
+    ->name('public.billing.download')
+    ->middleware('signed'); 
+

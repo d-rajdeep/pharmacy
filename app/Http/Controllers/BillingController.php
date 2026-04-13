@@ -164,4 +164,13 @@ class BillingController extends Controller
 
         return redirect()->back()->with('success', 'Bill deleted successfully');
     }
+
+    public function publicDownload(Bill $bill)
+    {
+        $bill->load('items.medicine');
+        $pdf = Pdf::loadView('billing.pdf', compact('bill'));
+
+        // You can use stream() to view in browser, or download() to force save
+        return $pdf->stream('Invoice-' . $bill->invoice_no . '.pdf');
+    }
 }

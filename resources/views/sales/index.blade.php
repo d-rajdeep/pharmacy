@@ -146,6 +146,11 @@
                                     </td>
                                     <td class="text-center pe-4">
                                         <div class="d-inline-flex gap-1">
+                                            <a href="{{ $bill->whatsapp_url }}" target="_blank"
+                                                class="btn btn-sm btn-light text-success border shadow-sm"
+                                                title="Send to WhatsApp">
+                                                <i class="fab fa-whatsapp fs-6"></i>
+                                            </a>
                                             <a href="{{ route('admin.billing.show', $bill) }}"
                                                 class="btn btn-sm btn-light text-primary border shadow-sm"
                                                 title="View Invoice">
