@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="col-md-4 mb-3">
-                            <label class="form-label fw-semibold">Strips Available</label>
+                            <label class="form-label fw-semibold">Available Quantity</label>
                             <input type="number" name="quantity" value="{{ old('quantity', $medicine->quantity) }}"
                                 class="form-control" required>
                         </div>
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="col-md-4 mb-3">
-                            <label class="form-label fw-semibold">MRP per Strip (₹)</label>
+                            <label class="form-label fw-semibold">MRP per Quantity (₹)</label>
                             <input type="number" step="0.01" name="mrp" value="{{ old('mrp', $medicine->mrp) }}"
                                 class="form-control" required>
                         </div>

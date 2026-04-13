@@ -24,7 +24,7 @@
             <ul class="navbar-nav float-left me-auto ms-3 ps-1"></ul>
 
             <ul class="navbar-nav float-end align-items-center">
-                <li class="nav-item d-none d-md-block me-3">
+                {{-- <li class="nav-item d-none d-md-block me-3">
                     <a class="nav-link" href="javascript:void(0)">
                         <form>
                             <div class="customize-input position-relative">
@@ -35,7 +35,7 @@
                             </div>
                         </form>
                     </a>
-                </li>
+                </li> --}}
 
                 <li class="nav-item dropdown pe-3">
                     <a class="nav-link dropdown-toggle d-flex align-items-center" href="javascript:void(0)"
